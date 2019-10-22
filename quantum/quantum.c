@@ -581,6 +581,7 @@ bool process_record_quantum(keyrecord_t *record) {
                         keymap_config.swap_backslash_backspace = true;
                         break;
                     case MAGIC_HOST_NKRO:
+                        clear_keyboard(); // clear first buffer to prevent stuck keys
                         keymap_config.nkro = true;
                         break;
                     case MAGIC_SWAP_ALT_GUI:
@@ -623,6 +624,7 @@ bool process_record_quantum(keyrecord_t *record) {
                         keymap_config.swap_backslash_backspace = false;
                         break;
                     case MAGIC_UNHOST_NKRO:
+                        clear_keyboard(); // clear first buffer to prevent stuck keys
                         keymap_config.nkro = false;
                         break;
                     case MAGIC_UNSWAP_ALT_GUI:
@@ -660,6 +662,7 @@ bool process_record_quantum(keyrecord_t *record) {
 #endif
                         break;
                     case MAGIC_TOGGLE_NKRO:
+                        clear_keyboard(); // clear first buffer to prevent stuck keys
                         keymap_config.nkro = !keymap_config.nkro;
                         break;
                     default:
