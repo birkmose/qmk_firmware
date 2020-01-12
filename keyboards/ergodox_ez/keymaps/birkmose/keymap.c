@@ -199,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_ergodox(
     // LEFT hand
     PT,             KC_F1,              KC_F2,                  KC_F3,              KC_F4,              KC_F5,              KC_F11,
-    PT,             PT,                 PT,                     KC_MS_UP,           PT,                 PT,                 PT,
+    PT,             PT,                 PT,                     NO_LESS,           NO_GRTR,                 PT,                 PT,
     PT,             RALT(KC_2),         KC_MS_LEFT,             KC_MS_DOWN,         PT,                 LSFT(KC_0),
     PT,             KC_MINUS,                 PT,                 PT,                     PT,                 PT,                 PT,
     PT,             KC_SLASH,                 PT,                 KC_MS_BTN1,             KC_MS_BTN2,
