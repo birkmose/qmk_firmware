@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_EQUAL,         KC_1,           KC_2,       KC_3,           KC_4,           KC_5,           KC_LEFT,
       KC_DELETE,        KC_Q,           KC_W,       KC_E,           KC_R,           KC_T,            TD(TD_LAY1_OR_3),
       KC_BSPACE,        KC_A,           KC_S,       LT(4,KC_D),     LT(2,KC_F),     LT(5,KC_G),
-      LCTL(KC_LSHIFT),        LCTL_T(KC_Z),   KC_X,       KC_C,           KC_V,   KC_B,              KC_TAB,
+      LCTL(KC_LSHIFT),        KC_Z,   KC_X,       KC_C,           KC_V,   KC_B,              KC_TAB,
       LT(5,KC_GRAVE),   KC_QUOTE,       LALT(KC_LSHIFT),            KC_LEFT,        KC_TAB,
 
                                                                                                 LALT_T(KC_APPLICATION),     KC_LGUI,
@@ -133,7 +133,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LALT,          KC_RALT,
       TD(TD_PG_UP_HOME),
       TD(TD_PG_DOWN_END),        RSFT_T(KC_SPACE),   TD(TD_LVL0_TKR2)),
-
 /* Keymap 1: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -579,9 +578,9 @@ void td_lvl0_tkr2_finished (qk_tap_dance_state_t *state, void *user_data) {
 print("fh\n");
   xtap_state.state = cur_danceTyped(TD_LVL0_TKR2,state);
   switch (xtap_state.state) {
-    case SINGLE_HOLD_INT: print("Unhandled singled hold int fh\n"); break;
+    case SINGLE_HOLD_INT: register_code(KC_LCTRL); break;//print("Unhandled singled hold int fh\n"); break;
     case SINGLE_TAP: register_code(KC_LSHIFT);register_code(KC_COMMA); break;
-    case DOUBLE_TAP: register_code(KC_LSHIFT);register_code(KC_DOT); break;
+    case DOUBLE_TAP: register_code(KC_LSHIFT);register_code(KC_COMMA);unregister_code(KC_COMMA); register_code(KC_COMMA); break;
     case SINGLE_HOLD: register_code(KC_LCTRL); break;
     case DOUBLE_HOLD: register_code(KC_LALT); break;
     //case DOUBLE_SINGLE_TAP: register_code(KC_); unregister_code(KC_X); register_code(KC_X);
@@ -595,9 +594,9 @@ void td_lvl0_tkr2_reset (qk_tap_dance_state_t *state, void *user_data) {
 print("rs\n");
 active_tapdances[TD_LVL0_TKR2] = 0;
   switch (xtap_state.state) {
-    case SINGLE_HOLD_INT: print("Unhandled singled hold int rs\n"); break;
+    case SINGLE_HOLD_INT: unregister_code(KC_LCTRL); break;//print("Unhandled singled hold int rs\n"); break;
     case SINGLE_TAP: unregister_code(KC_COMMA); unregister_code(KC_LSHIFT);break;
-    case DOUBLE_TAP: unregister_code(KC_DOT); unregister_code(KC_LSHIFT);break;
+    case DOUBLE_TAP: unregister_code(KC_COMMA); unregister_code(KC_LSHIFT);break;
     case SINGLE_HOLD: unregister_code(KC_LCTRL); break;
     case DOUBLE_HOLD: unregister_code(KC_LALT);
     //case DOUBLE_SINGLE_TAP: unregister_code(KC_X);
