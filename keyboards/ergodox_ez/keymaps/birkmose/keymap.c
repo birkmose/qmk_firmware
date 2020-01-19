@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_EQUAL,         KC_1,           KC_2,       KC_3,           KC_4,           KC_5,           KC_LEFT,
       KC_DELETE,        KC_Q,           KC_W,       KC_E,           KC_R,           KC_T,            TD(TD_LAY1_OR_3),
       KC_BSPACE,        KC_A,           KC_S,       LT(4,KC_D),     LT(2,KC_F),     LT(5,KC_G),
-      LCTL(KC_LSHIFT),        KC_Z,   KC_X,       KC_C,           KC_V,   KC_B,              KC_TAB,
+      LCTL(KC_LSHIFT),        KC_Z,   KC_X,       KC_C,           KC_V,   KC_B,              MT(MOD_HYPR,KC_TAB),
       LT(5,KC_GRAVE),   KC_QUOTE,       LALT(KC_LSHIFT),            KC_LEFT,        KC_TAB,
 
                                                                                                 LALT_T(KC_APPLICATION),     KC_LGUI,
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_RIGHT,         KC_6,               KC_7,               KC_8,       KC_9,           KC_0,                   KC_MINUS,
       KC_KP_SLASH,      KC_Y,               KC_U,               KC_I,       KC_O,           KC_P,                   NO_AM,
                         KC_H,               LT(2,KC_J),               KC_K,       KC_L,           LT(2,KC_SCOLON),        LGUI_T(KC_QUOTE),
-      KC_LGUI,      KC_N,               KC_M,               KC_COMMA,   KC_DOT,         KC_SLASH,               KC_LALT,
+      MT(MOD_HYPR, KC_LGUI),      KC_N,               KC_M,               KC_COMMA,   KC_DOT,         KC_SLASH,               MT(MOD_HYPR,KC_END),
                                             LALT_T(KC_ESCAPE),  KC_DOWN,    KC_LBRACKET,    KC_RBRACKET,            KC_A,
       KC_LALT,          KC_RALT,
       TD(TD_PG_UP_HOME),
