@@ -131,8 +131,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       MT(MOD_HYPR, KC_LGUI),      KC_N,               KC_M,               KC_COMMA,   KC_DOT,         KC_SLASH,               MT(MOD_HYPR,KC_END),
                                             LALT_T(KC_ESCAPE),  KC_DOWN,    KC_LBRACKET,    KC_RBRACKET,            KC_A,
       KC_LALT,          KC_RALT,
-      TD(TD_PG_UP_HOME),
-      TD(TD_PG_DOWN_END),        RSFT_T(KC_SPACE),   TD(TD_LVL0_TKR2)),
+      KC_PGUP,
+      KC_PGDOWN,        RSFT_T(KC_SPACE),   TD(TD_LVL0_TKR2)),
 /* Keymap 1: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
