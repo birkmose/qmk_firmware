@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       // left hand
       KC_EQUAL,         KC_1,           KC_2,       KC_3,           KC_4,           KC_5,           KC_LEFT,
       KC_DELETE,        KC_Q,           KC_W,       KC_E,           KC_R,           KC_T,            TD(TD_LAY1_OR_3),
-      KC_BSPACE,        KC_A,           KC_S,       LT(4,KC_D),     LT(2,KC_F),     LT(5,KC_G),
+      KC_BSPACE,        LT(4,KC_A),     LT(2, KC_S),LT(4,KC_D),     LT(2,KC_F),     LT(5,KC_G),
       LCTL(KC_LSHIFT),        KC_Z,   KC_X,       KC_C,           KC_V,   KC_B,              MT(MOD_HYPR,KC_TAB),
       LT(5,KC_GRAVE),   KC_QUOTE,       LALT(KC_LSHIFT),            KC_LEFT,        KC_TAB,
 
