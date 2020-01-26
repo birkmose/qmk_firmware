@@ -117,13 +117,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       // left hand
       KC_EQUAL,         KC_1,           KC_2,       KC_3,           KC_4,           KC_5,           KC_LEFT,
       KC_DELETE,        KC_Q,           KC_W,       KC_E,           KC_R,           KC_T,            TD(TD_LAY1_OR_3),
-      KC_BSPACE,        LT(4,KC_A),     LT(2, KC_S),KC_D,           KC_F,     LT(5,KC_G),
+      KC_BSPACE,        LT(4,KC_A),     KC_S,       KC_D,           KC_F,     LT(5,KC_G),
       LCTL(KC_LSHIFT),        KC_Z,   KC_X,       KC_C,           KC_V,   KC_B,              MT(MOD_HYPR,KC_TAB),
       LT(5,KC_GRAVE),   KC_QUOTE,       LALT(KC_LSHIFT),            KC_LEFT,        KC_TAB,
 
                                                                                                 LALT_T(KC_APPLICATION),     KC_LGUI,
                                                                                                                             KC_HOME,
-                                                                            LSFT(KC_DOT),           KC_ENTER,                   KC_END,
+                                                                            LT(2,KC_DOT),           LT(2,KC_ENTER),                   KC_END,
       // right hand
       KC_RIGHT,         KC_6,               KC_7,               KC_8,       KC_9,           KC_0,                   KC_MINUS,
       KC_KP_SLASH,      KC_Y,               KC_U,               KC_I,       KC_O,           KC_P,                   NO_AM,
@@ -213,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         KC_AUDIO_VOL_UP,        KC_AUDIO_VOL_DOWN,  KC_AUDIO_MUTE,      KC_F,               RESET,
     PT,             PT,
     PT,
-    PT,             PT,                 KC_WWW_BACK),
+    PT,             PT,                 LSFT(KC_DOT)),
 /* Keymap 5: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
