@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                             LT(2,KC_DOT),           LT(2,KC_ENTER),                   KC_END,
       // right hand
       KC_RIGHT,         KC_6,               KC_7,               KC_8,       KC_9,           KC_0,                   KC_MINUS,
-      KC_KP_SLASH,      KC_Y,               KC_U,               KC_I,       KC_O,           KC_P,                   NO_AM,
+      LSFT(KC_7),      KC_Y,               KC_U,               KC_I,       KC_O,           KC_P,                   NO_AM,
                         KC_H,               LT(2,KC_J),               KC_K,       KC_L,           LT(2,KC_SCOLON),        LGUI_T(KC_QUOTE),
       MT(MOD_HYPR, KC_LGUI),      KC_N,               KC_M,               KC_COMMA,   KC_DOT,         KC_SLASH,               MT(MOD_HYPR,KC_END),
                                             LALT_T(KC_ESCAPE),  KC_DOWN,    KC_LBRACKET,    KC_RBRACKET,            KC_A,
