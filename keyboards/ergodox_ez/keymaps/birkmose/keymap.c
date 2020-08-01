@@ -30,6 +30,17 @@ typedef struct {
   int state;
 } tap;
 
+
+// enum combos {
+//   UI_TAB,
+//   UIO_A,
+// };                    
+// const uint16_t PROGMEM ui_combo[] = {KC_H, KC_L, COMBO_END};
+// const uint16_t PROGMEM uio_combo[] = {KC_U, KC_O, COMBO_END};
+// combo_t key_combos[COMBO_COUNT] = {
+//   [UI_TAB] = COMBO(ui_combo, KC_TAB),
+//   [UIO_A] = COMBO(uio_combo, KC_A)
+// }
 enum {
   SINGLE_TAP = 1,
   SINGLE_HOLD = 2,
@@ -123,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                                                                 LALT_T(KC_APPLICATION),     KC_LGUI,
                                                                                                                             KC_HOME,
-                                                                            LT(2,KC_DOT),           LT(2,KC_ENTER),                   KC_END,
+                                                                            LT(2,KC_ENTER),           LT(2,KC_ENTER),                   KC_END,
       // right hand
       KC_RIGHT,         KC_6,               KC_7,               KC_8,       KC_9,           KC_0,                   KC_MINUS,
       LSFT(KC_7),      KC_Y,               KC_U,               KC_I,       KC_O,           KC_P,                   NO_AM,
@@ -206,8 +217,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                                             PT,
                                                                                         PT,             PT,                 PT,
     // RIGHT HAND
-    KC_F12,         KC_F6,              KC_F7,                  KC_F8,              KC_F9,              KC_F10,             KC_SLASH,
-    RALT(NO_LESS),  NO_LESS,            NO_LPRN,                NO_RPRN,            NO_GRTR,            PT,                 PT,
+    KC_F12,         KC_F6,              KC_F7,                  KC_F8,              KC_F9,              KC_F10,             LCTL(KC_INSERT),
+    RALT(NO_LESS),  NO_LESS,            NO_LPRN,                NO_RPRN,            NO_GRTR,            PT,                 LSFT(KC_INSERT),
                     TD(TD_DBL_OR_SINGLE_QUOTE),         NO_LCBR,                NO_RCBR,            LSFT(KC_0),         PT,                 KC_DK_SINGLE_QUOTE,
     RALT(KC_EQUAL),  TILDE,                 NO_LBRC,                NO_RBRC,            KC_MEDIA_NEXT_TRACK,PT,                 PT,
                                         KC_AUDIO_VOL_UP,        KC_AUDIO_VOL_DOWN,  KC_AUDIO_MUTE,      KC_F,               RESET,
@@ -362,18 +373,20 @@ uint16_t get_first_td(void)
     }
     if (maxTimer > 0)
     {
-        uprintf("Max timer: %d, %d\n", maxTimer, maxTime);
+       // uprintf("Max timer: %d, %d\n", maxTimer, maxTime);
     }
     return maxTimer;
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+      uprintf ("KL: col=%02d, row=%02d, pressed=%d, layer=%s\n", record->event.key.col,
+               record->event.key.row, record->event.pressed, "ADORE");
     uint16_t max_td = get_first_td();
     switch (max_td) {
         case TD_LVL0_TKR2:
         break;
     }
     #ifdef CONSOLE_ENABLE
-    uprintf("TI: %d, KL: kc: %u, col: %u, row: %u, pressed: %u\n", timer_read(), keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+    //uprintf("TI: %d, KL: kc: %u, col: %u, row: %u, pressed: %u\n", timer_read(), keycode, record->event.key.col, record->event.key.row, record->event.pressed);
 #endif
   switch (keycode) {
     case DE_LSPO:
@@ -410,14 +423,14 @@ void keyboard_post_init_user(void) {
 
 uint32_t layer_state_set_user(uint32_t state) {
   uint32_t layer = biton32(state);
-  uprintf("%d, %d layer activated\n", state, layer);
+  //uprintf("%d, %d layer activated\n", state, layer);
   if (state & 0b1000) {
   if (state & 0b100000) {
-      println("Layer 5 is active activating layer 2");
+      //println("Layer 5 is active activating layer 2");
       state = state | 0b100;
   }
   else if (state & 0b100) {
-      println("Layer 2 is active turning it of");
+      //println("Layer 2 is active turning it of");
       state = state & ~0b100;
   }
   }
@@ -430,7 +443,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   else if (state & 0b100) layer = 2;
   else if (state & 0b10) layer = 1;
 
-  uprintf("LAYER: %d\n", layer);
+ // uprintf("LAYER: %d\n", layer);
   ergodox_board_led_off();
   ergodox_right_led_1_off();
   ergodox_right_led_2_off();
@@ -504,12 +517,15 @@ int cur_danceTyped (int type, qk_tap_dance_state_t *state) {
         if (time == 0) time = 1;
         active_tapdances[type] = time;
     }
-    uprintf("count: %d\n", state->count);
-    if (state->interrupted)
-    print("Interupted\n");
-    if (state->pressed)
-    print("Pressed\n");;  if (state->count == 1) {
-    if (state->interrupted && state->pressed)  {print("INT\n"); return SINGLE_HOLD_INT;}
+   // uprintf("count: %d\n", state->count);
+   // if (state->interrupted)
+    //print("Interupted\n");
+    //if (state->pressed)
+    //print("Pressed\n");;  
+    if (state->count == 1) {
+    if (state->interrupted && state->pressed)  {
+      //print("INT\n"); 
+      return SINGLE_HOLD_INT;}
     if (state->interrupted || !state->pressed)  return SINGLE_TAP;
     //key has not been interrupted, but they key is still held. Means you want to send a 'HOLD'.
     else return SINGLE_HOLD;
@@ -557,11 +573,11 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void x_reset (qk_tap_dance_state_t *state, void *user_data) {
-  uprintf("RScount: %d\n", state->count);
-    if (state->interrupted)
-    print("RSInterupted\n");
-    if (state->pressed)
-    print("RSPressed\n");
+//  uprintf("RScount: %d\n", state->count);
+  //  if (state->interrupted)
+   // print("RSInterupted\n");
+   // if (state->pressed)
+    //print("RSPressed\n");
 
   switch (xtap_state.state) {
     case SINGLE_TAP: layer_invert(4); break;
@@ -571,11 +587,11 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
 }
 void td_lvl0_tkr2_always (qk_tap_dance_state_t *state, void *user_data) {
 
-print("always\n");
+//print("always\n");
 }
 void td_lvl0_tkr2_finished (qk_tap_dance_state_t *state, void *user_data) {
 
-print("fh\n");
+//print("fh\n");
   xtap_state.state = cur_danceTyped(TD_LVL0_TKR2,state);
   switch (xtap_state.state) {
     case SINGLE_HOLD_INT: register_code(KC_LCTRL); break;//print("Unhandled singled hold int fh\n"); break;
@@ -591,7 +607,7 @@ print("fh\n");
 }
 
 void td_lvl0_tkr2_reset (qk_tap_dance_state_t *state, void *user_data) {
-print("rs\n");
+//print("rs\n");
 active_tapdances[TD_LVL0_TKR2] = 0;
   switch (xtap_state.state) {
     case SINGLE_HOLD_INT: unregister_code(KC_LCTRL); break;//print("Unhandled singled hold int rs\n"); break;
